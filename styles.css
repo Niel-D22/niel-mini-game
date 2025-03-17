@@ -1,0 +1,110 @@
+:root {
+  box-sizing: border-box;
+}
+
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  height: 100vh;
+}
+
+/*---tampilan input---*/
+#inputselection {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  width: 350px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#inputselection:hover {
+  transform: scale(1.05);
+}
+
+#inputselection h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #f8d210;
+}
+
+#namaPemain {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+#namaPemain::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #f8d210, #ff8c00);
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ffcc00, #ff6600);
+  transform: scale(1.1);
+}
+
+/*tampilan game*/
+.summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 3px solid blanchedalmond;
+  width: 400px;
+  height: 400px;
+  text-align: center;
+}
+.Games {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.option {
+  width: 30%;
+  margin: 10px 15px;
+  padding: 25px;
+  text-align: center;
+  font-size: 40px;
+  background-color: bisque;
+}
+.option:hover {
+  cursor: pointer;
+  background-color: burlywood;
+  transition: cubic-bezier(0.215, 0.61, 0.355, 1) ease-in-out;
+  transform: scale(105%);
+  -webkit-transform: scale(105%);
+  -moz-transform: scale(105%);
+  -ms-transform: scale(105%);
+  -o-transform: scale(105%);
+  -webkit-transition: cubic-bezier(0.215, 0.61, 0.355, 1) ease-in-out;
+  -moz-transition: cubic-bezier(0.215, 0.61, 0.355, 1) ease-in-out;
+  -ms-transition: cubic-bezier(0.215, 0.61, 0.355, 1) ease-in-out;
+  -o-transition: cubic-bezier(0.215, 0.61, 0.355, 1) ease-in-out;
+}

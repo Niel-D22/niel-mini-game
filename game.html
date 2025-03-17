@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Daniel Mini Games</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="inputSelection">
+        <h2>Masukan Ngana Pe Nama</h2>
+        <input type="text" id="namaPemain" placeholder="Nga Penama.." />
+        <button onclick="startGame()">Mulai Jo</button>
+      </div>
+      <div id="gameSelection" style="display: none">
+        <div class="summary">
+          <h1 class="titel">MATCH RESULT</h1>
+          <br />
+          <h1 id="inGame"></h1>
+          <h1 id="result"></h1>
+          <h1 class="result"></h1>
+        </div>
+        <div class="Games">
+          <div class="option" onclick="pickOption('🖐️')">🖐️</div>
+          <div class="option" onclick="pickOption('✌️')">✌️</div>
+          <div class="option" onclick="pickOption('✊')">✊</div>
+        </div>
+      </div>
+    </div>
+    <script defer>
+      let playerName = ""; // Variabel untuk menyimpan nama pemain
+
+      function startGame() {
+        const inputNama = document.getElementById("namaPemain");
+
+        // Debug: Cek apakah elemen ditemukan
+        console.log("Cek Input Nama:", inputNama);
+
+        if (!inputNama) {
+          alert("Error: Elemen input nama tidak ditemukan!");
+          return;
+        }
+
+        if (inputNama.value.trim() === "") {
+          alert("Silakan masukkan nama kamu dulu!");
+          return;
+        }
+
+        playerName = inputNama.value; // Simpan nama pemain
+
+        // Sembunyikan input nama & tampilkan game
+        document.getElementById("inputSelection").style.display = "none";
+        document.getElementById("gameSelection").style.display = "block";
+      }
+
+      class Start {
+        constructor(namaPemain) {
+          this.namaPemain = namaPemain;
+          this.namaBot = "daniel Ganteng yg menang wlee 😆🤫....";
+          this.namaOption = "";
+          this.botOption = "";
+          this.winner = "";
+        }
+
+        get getbotOption() {
+          return this.botOption;
+        }
+        set setbotOption(option) {
+          this.botOption = option;
+        }
+        get getpemainOption() {
+          return this.namaOption;
+        }
+
+        set setpemainOption(option) {
+          this.namaOption = option;
+        }
+
+        otakBot() {
+          const option = ["🖐️", "✌️", "✊"];
+          const bot = option[Math.floor(Math.random() * option.length)];
+          this.botOption = bot;
+        }
+        prediksiMenang() {
+          if (this.botOption == "🖐️" && this.namaOption == "✌️") {
+            return (this.winner = this.namaPemain);
+          } else if (this.botOption == "🖐️" && this.namaOption == "✊") {
+            return (this.winner = this.namaBot);
+          } else if (this.botOption == "✌️" && this.namaOption == "🖐️") {
+            return (this.winner = this.namaBot);
+          } else if (this.botOption == "✌️" && this.namaOption == "✊") {
+            return (this.winner = this.namaPemain);
+          } else if (this.botOption == "✊" && this.namaOption == "🖐️") {
+            return (this.winner = this.namaPemain);
+          } else if (this.botOption == "✊" && this.namaOption == "✌️") {
+            return (this.winner = this.namaBot);
+          } else {
+            return (this.winner = "SERI");
+          }
+        }
+        match() {
+          if (this.winner != "SERI") {
+            return `${this.winner} MENANG!`;
+          } else {
+            return `yah ${this.winner}, babutul kwa 😆`;
+          }
+        }
+      }
+      function pickOption(params) {
+        if (playerName === "") {
+          alert("Masukkan nama capat jo");
+          return;
+        }
+
+        const start = new Start(playerName);
+        start.setpemainOption = params;
+        start.otakBot();
+        start.prediksiMenang();
+        console.log(
+          `player ${start.getpemainOption} VS bot :${start.getbotOption}`
+        );
+        console.log("HASIL AKHIR : ", start.match());
+
+        const inGame = document.getElementById("inGame");
+        const result = document.getElementById("result");
+
+        setTimeout(() => {
+          inGame.textContent = ` ${start.getpemainOption} VS   ${start.getbotOption}`;
+          result.textContent = start.match();
+        }, 1500);
+
+        inGame.textContent = "...";
+        result.textContent = "...";
+      }
+    </script>
+  </body>
+</html>
